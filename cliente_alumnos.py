@@ -32,9 +32,9 @@ try:
         escoger_movimieto( mensaje ) se encuentra en botdummy, es tarea de ustedes completar esta funcion.
 
         """
+        print mensaje
         disparo = escoger_disparo( mensaje )   
         movimiento = escoger_movimiento( mensaje )
-        print movimiento
         mensaje =  disparo+"/"+movimiento
         cliente.send(mensaje )
 except socket.error:
