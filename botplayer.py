@@ -2,35 +2,37 @@ import numpy
 import random
 
 def calcularCuadrante(cuadrante, mayorAmen = 0):
+	print cuadrante, mayorAmen
 	if cuadrante == 0:
-		if mayorAmen <= 1:
+		if mayorAmen == 1 or mayorAmen == 0:
 			return "2,0"
 		elif mayorAmen == 2:
 			return "1,0"
 		elif mayorAmen == 3:
 			return "3,0"		
 	elif cuadrante == 1:
-		if mayorAmen <= 1:
+		if mayorAmen == 1 or mayorAmen == 0:
 			return "0,2"
 		elif mayorAmen == 2:
 			return "0,1"
 		elif mayorAmen == 3:
 			return "0,3"
 	elif cuadrante == 2:
-		if mayorAmen <= 1:
+		if mayorAmen == 1 or mayorAmen == 0:
 			return "-2,0"
 		elif mayorAmen == 2:
 			return "-1,0"
 		elif mayorAmen == 3:
 			return "-3,0"
 	elif cuadrante == 3:
-		if mayorAmen <= 1:
+		if mayorAmen == 1 or mayorAmen == 0:
 				return "0,-2"
 		elif mayorAmen == 2:
 			return "0,-1"
 		elif mayorAmen == 3:
 			return "0,-3"
-	return "-2,0"
+	else:
+		return "-2,0"
 
 def escoger_movimiento( amenazas ):
 	#movimiento_y = ""
@@ -62,8 +64,6 @@ def escoger_movimiento( amenazas ):
 		if amenDirecta[i] > mayorAmen:
 			mayorAmen = amenDirecta[i]
 			gradoMayor = i
-	print "Cuadrante =", cuadLoc
-	print "gradoAmen =", gradoMayor
 	if mayorCuad != None:
 		if len(amenDirecta) == 0:
 			return calcularCuadrante(cuadLoc, 0)
@@ -77,8 +77,11 @@ def escoger_disparo( amenazas ):
 	#disparo_y = ""
 	amenazas = amenazas.strip().split(':')
 	a = random.randint(1,2)
+	disparo = 0
+	while (disparo == 0):
+		disparo = random.randint(-5,5)
 	if a%2 == 0:
-		return str(random.randint(-5,5))+",0"
+		return str(disparo)+",0"
 	else:
-		return "0,"+str(random.randint(-5,5))
+		return "0,"+str(disparo)
 	#return disparo_x + "," + disparo_y
