@@ -30,7 +30,7 @@ def calcularCuadrante(cuadrante, mayorAmen = 0):
 			return "0,-1"
 		elif mayorAmen == 3:
 			return "0,-3"
-	return "0,-2"
+	return "-2,0"
 
 def escoger_movimiento( amenazas ):
 	#movimiento_y = ""
@@ -42,13 +42,13 @@ def escoger_movimiento( amenazas ):
 	amenazas = amenazas.strip().split(':')
 	if len(amenazas) == 1:
 		AmenCuad = amenazas[0].split('-')
-		for i in range(4):
+		for i in range(len(AmenCuad)):
 			if mayorCuad < AmenCuad[i]:
 				mayorCuad = AmenCuad[i]
 				cuadLoc = i				
 	elif len(amenazas) == 2:
 		AmenCuad = amenazas[1].split('-')
-		for i in range(4):
+		for i in range(len(AmenCuad)):
 			if mayorCuad < AmenCuad[i]:
 				mayorCuad = AmenCuad[i]
 				cuadLoc = i
@@ -62,12 +62,15 @@ def escoger_movimiento( amenazas ):
 		if amenDirecta[i] > mayorAmen:
 			mayorAmen = amenDirecta[i]
 			gradoMayor = i
-	print amenDirecta
-	print mayorCuad
-	if len(amenDirecta) == 0:
-		hueaita = calcularCuadrante(mayorCuad, 0)
-	hueaita = calcularCuadrante(mayorCuad,gradoMayor)
-	return hueaita
+	print "Cuadrante =", cuadLoc
+	print "gradoAmen =", gradoMayor
+	if mayorCuad != None:
+		if len(amenDirecta) == 0:
+			return calcularCuadrante(cuadLoc, 0)
+		else:
+			return calcularCuadrante(cuadLoc,gradoMayor)
+	else:
+		return "0,1"
 					
 def escoger_disparo( amenazas ):
 	#disparo_x = ""
